@@ -1,0 +1,19 @@
+use std::fs;
+use std::collections::VecDeque;
+
+fn main() {
+    let filename = "input.txt";
+    println!("In file {}", filename);
+
+    let contents = fs::read_to_string(filename)
+        .expect("Something went wrong reading the file");
+   
+    let matrix: Vec<Vec<u32>> = contents.lines().map(|l| l.chars().map(|c| c.to_digit(10).unwrap()).collect()).collect();
+    
+    let mut flashes = 0;
+    for _i in 0..100 {
+        flashes += get_flash(&matrix);
+    }
+    println!("There are {}", flashes);
+}
+
