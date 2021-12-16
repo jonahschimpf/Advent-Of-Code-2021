@@ -1,0 +1,25 @@
+1) Make coordinates and verify that each fold for each step is such
+that there are an equal amount of rows or columns on each side for each fold.
+
+
+So like if there are 5 columns make sure y = 2 {0, 1, 2, 3, 4} since 2 is in the middle
+
+2) I guess we should have a map of structs that look like:
+{p: Point: has_dot: bool}.
+
+Then for each fold we find the two corresponding points, remove one of the points,
+or the has_dot thing with each other and then count how many has_dot there are in the map?
+
+A gotcha would be, since you are folding UP when x=something, the coordinates above the horizontal line
+wont change and you just through away the corresponding coords bellow the line. But when you fold LEFT
+The x coordinates get shifted to the left by (verify this) half the width - 1. 
+
+#.##.|#..#.
+#...#|.....
+.....|#...#
+#...#|.....
+.#.#.|#.###
+.....|.....
+.....|.....
+
+If you look at the # at (6, 0) it becomes (0,0). Since the width is 11,  11 /2 = 5. 6 - 5 -1 = 0. Maybe?
